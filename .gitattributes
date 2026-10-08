@@ -1,0 +1,4 @@
+* text=auto eol=lf
+data/raw/*.csv -text -diff
+data/cleaned/*.csv -text whitespace=cr-at-eol
+*.sqlite binary

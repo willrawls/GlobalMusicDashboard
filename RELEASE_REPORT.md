@@ -26,6 +26,7 @@ React/TypeScript frontend, FastAPI backend, generated SQLite database opened rea
 - 34 local HTTP checks and the same 34 public HTTPS checks passed using `scripts/smoke.py`; additional invalid-date and unknown-API checks passed.
 - All seven pages inspected through browser DOM at desktop and 390×844 mobile viewport; no page-level horizontal overflow. Overview and artist-detail screenshots visually inspected. Tables and heatmaps intentionally allow internal horizontal scrolling on narrow screens.
 - All seven public pages rendered successfully with no captured browser errors.
+- Keyboard activation of calculation disclosure and the live incomplete-coverage question were exercised successfully.
 - A JAŸ-Z/Taylor Swift comparison displayed 23 common observed dates; indexed/smoothed controls and dark mode were exercised. Direct artist routes and constructed encoded Wikipedia links were verified.
 - Published original files match every local source SHA-256 hash. Published manifest and database-derived quality hashes match the ingestion manifest.
 - Verified live counts: 51 artists, 4,931 releases, 1,493 observations, 9,509,128 views. Arijit Singh is 79,015; JAŸ-Z has 23 observed days; the tribute band retains null attention.
