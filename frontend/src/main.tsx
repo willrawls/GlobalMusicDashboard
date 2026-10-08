@@ -554,33 +554,35 @@ function App() {
   }
   return (
     <div className="shell">
-      <aside>
-        <a href="/" className="brand">
-          <span className="brand-mark">
-            <AudioLines size={24} />
-          </span>
-          <span>
-            Music Attention<span className="atlas">ATLAS</span>
-          </span>
-        </a>
-        <button
-          className="theme"
-          role="switch"
-          aria-checked={dark}
-          aria-label="Night Owl dark theme"
-          title={`Switch to ${dark ? "Light Owl" : "Night Owl"}`}
-          onClick={() => setDark(!dark)}
-        >
-          {dark ? <Moon size={17} /> : <Sun size={17} />}
-          <span>{dark ? "Night Owl" : "Light Owl"}</span>
-          <span className="theme-track" aria-hidden="true">
-            <span />
-          </span>
-        </button>
-        <div className="nav-label">EXPLORE THE SNAPSHOT</div>
+      <header className="site-header">
+        <div className="site-identity">
+          <a href="/" className="brand">
+            <span className="brand-mark">
+              <AudioLines size={24} />
+            </span>
+            <span>
+              Music Attention<span className="atlas">ATLAS</span>
+            </span>
+          </a>
+          <button
+            className="theme"
+            role="switch"
+            aria-checked={dark}
+            aria-label="Night Owl dark theme"
+            title={`Switch to ${dark ? "Light Owl" : "Night Owl"}`}
+            onClick={() => setDark(!dark)}
+          >
+            {dark ? <Moon size={17} /> : <Sun size={17} />}
+            <span>{dark ? "Night Owl" : "Light Owl"}</span>
+            <span className="theme-track" aria-hidden="true">
+              <span />
+            </span>
+          </button>
+        </div>
         <nav aria-label="Main navigation">
           {nav.map(([url, label, Icon]) => (
             <a
+              aria-current={url === page ? "page" : undefined}
               className={url === page ? "active" : ""}
               href={url + "?" + params}
               key={url}
@@ -590,16 +592,7 @@ function App() {
             </a>
           ))}
         </nav>
-        <div className="sidebar-note">
-          <span className="eyebrow">THE EVIDENCE, IN CONTEXT</span>
-          <p>
-            Attention is a signal.
-            <br />
-            It is not the whole story.
-          </p>
-          <small>Wikipedia pageviews & MusicBrainz metadata.</small>
-        </div>
-      </aside>
+      </header>
       <main>
         <header className="topbar">
           <span>GLOBAL MUSIC / SNAPSHOT EXPLORER</span>

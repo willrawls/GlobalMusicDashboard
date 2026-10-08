@@ -116,20 +116,19 @@ small,
   line-height: 1.6;
 }
 .shell {
-  display: flex;
   min-height: 100vh;
 }
-aside {
-  width: 248px;
-  flex-shrink: 0;
-  border-right: 1px solid var(--line);
-  padding: 32px 20px;
+.site-header {
+  padding: 16px 28px 0;
   background: var(--side);
-  height: 100vh;
-  position: sticky;
-  top: 0;
+  border-bottom: 1px solid var(--line);
+}
+.site-identity {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px 24px;
+  margin-bottom: 14px;
 }
 .brand {
   display: flex;
@@ -139,7 +138,7 @@ aside {
   font-family: Georgia, serif;
   font-size: 18px;
   line-height: 1.2;
-  margin-bottom: 20px;
+  margin-bottom: 0;
 }
 .brand:hover {
   text-decoration: none;
@@ -159,29 +158,27 @@ aside {
   letter-spacing: 4px;
   margin-top: 6px;
 }
-.nav-label,
 .eyebrow {
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 1.6px;
   color: var(--muted);
 }
-.nav-label {
-  margin: 0 10px 14px;
-}
 nav {
-  display: grid;
-  gap: 2px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 6px;
 }
 nav a {
   display: flex;
-  gap: 12px;
+  gap: 8px;
   align-items: center;
   color: var(--muted);
   font-size: 14px;
-  padding: 8px 11px;
-  min-height: 36px;
-  border-radius: 6px;
+  padding: 12px 11px;
+  min-height: 44px;
+  border-radius: 6px 6px 0 0;
+  border-bottom: 3px solid transparent;
 }
 nav a:hover {
   background: var(--soft);
@@ -190,25 +187,8 @@ nav a:hover {
 nav .active {
   background: var(--soft);
   color: var(--accent);
+  border-bottom-color: var(--accent);
   font-weight: 650;
-}
-.sidebar-note {
-  margin-top: auto;
-  border-top: 1px solid var(--line);
-  padding: 24px 10px 16px;
-}
-.sidebar-note .eyebrow {
-  font-size: 10px;
-  letter-spacing: 1px;
-}
-.sidebar-note p {
-  font-family: Georgia, serif;
-  font-size: 19px;
-  margin: 12px 0;
-  line-height: 1.45;
-}
-.sidebar-note small {
-  font-size: 12px;
 }
 .theme {
   display: flex;
@@ -218,9 +198,9 @@ nav .active {
   border: 1px solid var(--line);
   color: var(--ink);
   font-size: 14px;
-  width: 100%;
+  width: 190px;
   min-height: 44px;
-  margin-bottom: 28px;
+  margin-bottom: 0;
   padding: 10px;
 }
 .theme-track {
@@ -892,10 +872,6 @@ footer p {
   }
 }
 @media (max-width: 1150px) {
-  aside {
-    width: 205px;
-    padding: 25px 13px;
-  }
   .brand {
     font-size: 16px;
   }
@@ -916,42 +892,15 @@ footer p {
   }
 }
 @media (max-width: 850px) {
-  .shell {
-    display: block;
-  }
-  aside {
-    position: static;
-    height: auto;
-    width: auto;
-    padding: 16px;
-    border-right: 0;
-    border-bottom: 1px solid var(--line);
-  }
-  .brand {
-    margin-bottom: 15px;
-    width: fit-content;
-  }
-  .nav-label,
-  .sidebar-note {
-    display: none;
-  }
-  nav {
-    display: flex;
-    overflow: auto;
-    gap: 6px;
-    padding-bottom: 5px;
+  .site-header {
+    padding: 16px 16px 0;
   }
   nav a {
-    white-space: nowrap;
     padding: 10px;
     font-size: 12px;
   }
   nav a svg {
     width: 16px;
-  }
-  .theme {
-    width: 190px;
-    margin-bottom: 16px;
   }
   .topbar {
     height: 45px;
