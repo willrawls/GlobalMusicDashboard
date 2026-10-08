@@ -1,0 +1,850 @@
+{
+  "schemas": {
+    "artists": [
+      "artist_mbid",
+      "artist_name",
+      "artist_type",
+      "country",
+      "disambiguation",
+      "gender",
+      "area",
+      "tags",
+      "aliases",
+      "begin_date",
+      "source_url",
+      "collected_at"
+    ],
+    "releases": [
+      "artist_mbid",
+      "artist_name",
+      "release_mbid",
+      "release_title",
+      "release_date",
+      "release_country",
+      "release_status",
+      "release_packaging",
+      "release_barcode",
+      "release_disambiguation",
+      "release_language",
+      "media_count",
+      "track_count",
+      "source_url",
+      "collected_at"
+    ],
+    "pageviews": [
+      "artist_name",
+      "wiki_title",
+      "pageview_date",
+      "pageviews",
+      "source_url",
+      "collected_at"
+    ],
+    "artist_attention_summary": [
+      "artist_mbid",
+      "artist_name",
+      "artist_type",
+      "gender",
+      "country",
+      "begin_year",
+      "disambiguation",
+      "top_tags",
+      "source",
+      "release_count",
+      "first_release_year",
+      "last_release_year",
+      "total_pageviews",
+      "median_daily_views",
+      "pageview_days"
+    ],
+    "data_dictionary": [
+      "column_name",
+      "description",
+      "data_type",
+      "source",
+      "nullable"
+    ],
+    "data_dictionary_release": [
+      "table",
+      "column",
+      "description",
+      "type"
+    ]
+  },
+  "source_hashes": {
+    "artists.csv": "613d6600f2eeb964826320a7ed5a4194ffd0c23f7e671a81bc9e7c62db2f1771",
+    "releases.csv": "16b86f6becd110dad615155d8c74cb449a1e812669cd8800e58f027f77abd220",
+    "pageviews.csv": "14b9bfcb5a615554283a0c5e7e871f81021ffb9a6c1fe79f0e8c95057676db1c",
+    "artist_attention_summary.csv": "bfe8f98770098e3bb9312c958604871ac3c5c2da479bbb6645c63faf00f17ae0",
+    "data_dictionary.csv": "fb7993bd84e023906d9524c5a6e812e4cf861b48e366cc0209b761cb9f24bd16",
+    "data_dictionary_release.csv": "3eaff33475886fec296f5bf3e59cff61d5513a971607692218ed0a7762eb6f22"
+  },
+  "row_counts": {
+    "artists": 51,
+    "releases": 4931,
+    "pageviews": 1493,
+    "artist_attention_summary": 42,
+    "data_dictionary": 26,
+    "data_dictionary_release": 11
+  },
+  "missingness": {
+    "artists": {
+      "artist_mbid": 0,
+      "artist_name": 0,
+      "artist_type": 0,
+      "country": 2,
+      "disambiguation": 26,
+      "gender": 6,
+      "area": 1,
+      "tags": 1,
+      "aliases": 1,
+      "begin_date": 1,
+      "source_url": 0,
+      "collected_at": 0
+    },
+    "releases": {
+      "artist_mbid": 0,
+      "artist_name": 0,
+      "release_mbid": 0,
+      "release_title": 0,
+      "release_date": 53,
+      "release_country": 426,
+      "release_status": 80,
+      "release_packaging": 1614,
+      "release_barcode": 2591,
+      "release_disambiguation": 4122,
+      "release_language": 275,
+      "media_count": 0,
+      "track_count": 0,
+      "source_url": 0,
+      "collected_at": 0
+    },
+    "pageviews": {
+      "artist_name": 0,
+      "wiki_title": 0,
+      "pageview_date": 0,
+      "pageviews": 0,
+      "source_url": 0,
+      "collected_at": 0
+    },
+    "artist_attention_summary": {
+      "artist_mbid": 0,
+      "artist_name": 0,
+      "artist_type": 0,
+      "gender": 5,
+      "country": 2,
+      "begin_year": 1,
+      "disambiguation": 23,
+      "top_tags": 1,
+      "source": 0,
+      "release_count": 0,
+      "first_release_year": 2,
+      "last_release_year": 2,
+      "total_pageviews": 0,
+      "median_daily_views": 2,
+      "pageview_days": 0
+    },
+    "data_dictionary": {
+      "column_name": 0,
+      "description": 0,
+      "data_type": 0,
+      "source": 0,
+      "nullable": 0
+    },
+    "data_dictionary_release": {
+      "table": 0,
+      "column": 0,
+      "description": 0,
+      "type": 0
+    }
+  },
+  "duplicate_release_mbids": [],
+  "identity_matches": [
+    {
+      "artist_name": "Bruno Mars",
+      "artist_mbid": "afb680f2-b6eb-4cd7-a70b-a63b25c763d5",
+      "method": "exact"
+    },
+    {
+      "artist_name": "Taylor Swift",
+      "artist_mbid": "20244d07-534f-4eff-b4d4-930878889970",
+      "method": "exact"
+    },
+    {
+      "artist_name": "Beyoncé",
+      "artist_mbid": "859d0860-d480-4efd-970c-c05d5f1776b8",
+      "method": "exact"
+    },
+    {
+      "artist_name": "The Weeknd",
+      "artist_mbid": "c8b03190-306c-4120-bb0b-6f2ebfc06ea9",
+      "method": "exact"
+    },
+    {
+      "artist_name": "Adele",
+      "artist_mbid": "cc2c9c3c-b7bc-4b8b-84d8-4fbd8779e493",
+      "method": "exact"
+    },
+    {
+      "artist_name": "Ed Sheeran",
+      "artist_mbid": "b8a7c51f-362c-4dcb-a259-bc6e0095f0a6",
+      "method": "exact"
+    },
+    {
+      "artist_name": "Billie Eilish",
+      "artist_mbid": "f4abc0b5-3f7a-4eff-8f78-ac078dbce533",
+      "method": "exact"
+    },
+    {
+      "artist_name": "Lady Gaga",
+      "artist_mbid": "650e7db6-b795-4eb5-a702-5ea2fc46c848",
+      "method": "exact"
+    },
+    {
+      "artist_name": "Michael Jackson",
+      "artist_mbid": "f27ec8db-af05-4f36-916e-3d57f91ecf5e",
+      "method": "exact"
+    },
+    {
+      "artist_name": "Queen",
+      "artist_mbid": "0383dadf-2a4e-4d10-a46a-e9e041da8eb3",
+      "method": "exact"
+    },
+    {
+      "artist_name": "Rihanna",
+      "artist_mbid": "73e5e69d-3554-40d8-8516-00cb38737a1c",
+      "method": "exact"
+    },
+    {
+      "artist_name": "Drake",
+      "artist_mbid": "9fff2f8a-21e6-47de-a2b8-7f449929d43f",
+      "method": "exact"
+    },
+    {
+      "artist_name": "Kendrick Lamar",
+      "artist_mbid": "381086ea-f511-4aba-bdf9-71c753dc5077",
+      "method": "exact"
+    },
+    {
+      "artist_name": "Justin Bieber",
+      "artist_mbid": "e0140a67-e4d1-4f13-8a01-364355bee46e",
+      "method": "exact"
+    },
+    {
+      "artist_name": "Ariana Grande",
+      "artist_mbid": "f4fdbb4c-e4b7-47a0-b83b-d91bbfcfa387",
+      "method": "exact"
+    },
+    {
+      "artist_name": "Katy Perry",
+      "artist_mbid": "122d63fc-8671-43e4-9752-34e846d62a9c",
+      "method": "exact"
+    },
+    {
+      "artist_name": "Dua Lipa",
+      "artist_mbid": "6f1a58bf-9b1b-49cf-a44a-6cefad7ae04f",
+      "method": "exact"
+    },
+    {
+      "artist_name": "Sabrina Carpenter",
+      "artist_mbid": "1882fe91-cdd9-49c9-9956-8e06a3810bd4",
+      "method": "exact"
+    },
+    {
+      "artist_name": "Olivia Rodrigo",
+      "artist_mbid": "6925db17-f35e-42f3-a4eb-84ee6bf5d4b0",
+      "method": "exact"
+    },
+    {
+      "artist_name": "The Beatles",
+      "artist_mbid": "b10bbbfc-cf9e-42e0-be17-e2c3e1d2600d",
+      "method": "exact"
+    },
+    {
+      "artist_name": "Elvis Presley",
+      "artist_mbid": "01809552-4f87-45b0-afff-2c6f0730a3be",
+      "method": "exact"
+    },
+    {
+      "artist_name": "Whitney Houston",
+      "artist_mbid": "0307edfc-437c-4b48-8700-80680e66a228",
+      "method": "exact"
+    },
+    {
+      "artist_name": "Prince",
+      "artist_mbid": "070d193a-845c-479f-980e-bef15710653e",
+      "method": "exact"
+    },
+    {
+      "artist_name": "David Bowie",
+      "artist_mbid": "5441c29d-3602-4898-b1a1-b77fa23b8e50",
+      "method": "exact"
+    },
+    {
+      "artist_name": "Bob Dylan",
+      "artist_mbid": "72c536dc-7137-4477-a521-567eeb840fa8",
+      "method": "exact"
+    },
+    {
+      "artist_name": "Stevie Wonder",
+      "artist_mbid": "1ee18fb3-18a6-4c7f-8ba0-bc41cdd0462e",
+      "method": "exact"
+    },
+    {
+      "artist_name": "Marvin Gaye",
+      "artist_mbid": "afdb7919-059d-43c1-b668-ba1d265e7e42",
+      "method": "exact"
+    },
+    {
+      "artist_name": "Aretha Franklin",
+      "artist_mbid": "2f9ecbed-27be-40e6-abca-6de49d50299e",
+      "method": "exact"
+    },
+    {
+      "artist_name": "Frank Sinatra",
+      "artist_mbid": "197450cd-0124-4164-b723-3c22dd16494d",
+      "method": "exact"
+    },
+    {
+      "artist_name": "Eminem",
+      "artist_mbid": "b95ce3ff-3d05-4e87-9e01-c97b66af13d4",
+      "method": "exact"
+    },
+    {
+      "artist_name": "JAŸ-Z",
+      "artist_mbid": "f82bcf78-5b69-4622-a5ef-73800768d9ac",
+      "method": "exact"
+    },
+    {
+      "artist_name": "Nicki Minaj",
+      "artist_mbid": "1036b808-f58c-4a3e-b461-a2c4492ecf1b",
+      "method": "exact"
+    },
+    {
+      "artist_name": "Cardi B",
+      "artist_mbid": "2f3c4d70-0462-40da-bba3-0aec5772c556",
+      "method": "exact"
+    },
+    {
+      "artist_name": "Bad Bunny",
+      "artist_mbid": "89aa5ecb-59ad-46f5-b3eb-2d424e941f19",
+      "method": "exact"
+    },
+    {
+      "artist_name": "J Balvin",
+      "artist_mbid": "5bdeb32d-56a5-4b6d-a768-264101fa0a0a",
+      "method": "exact"
+    },
+    {
+      "artist_name": "Shakira",
+      "artist_mbid": "bf24ca37-25f4-4e34-9aec-460b94364cfc",
+      "method": "exact"
+    },
+    {
+      "artist_name": "Daddy Yankee",
+      "artist_mbid": "2f522f5c-111c-4ce8-8bd0-d82e97c227ad",
+      "method": "exact"
+    },
+    {
+      "artist_name": "BTS",
+      "artist_mbid": "0d79fe8e-ba27-4859-bb8c-2f255f346853",
+      "method": "exact"
+    },
+    {
+      "artist_name": "BLACKPINK",
+      "artist_mbid": "48646387-1664-4c9a-9139-9bfd091b823c",
+      "method": "exact"
+    },
+    {
+      "artist_name": "A. R. Rahman",
+      "artist_mbid": "e0bba708-bdd3-478d-84ea-c706413bedab",
+      "method": "exact"
+    },
+    {
+      "artist_name": "Arijit Singh",
+      "artist_mbid": "ed3f4831-e3e0-4dc0-9381-f5649e9df221",
+      "method": "exact"
+    },
+    {
+      "artist_name": "Diljit Dosanjh",
+      "artist_mbid": "f931c961-b647-4861-be8c-f47d84a4de51",
+      "method": "exact"
+    },
+    {
+      "artist_name": "Lata Mangeshkar",
+      "artist_mbid": "aeb71bd8-447d-4415-8ea1-2b7d664f67e1",
+      "method": "exact"
+    },
+    {
+      "artist_name": "Kishore Kumar",
+      "artist_mbid": "793b8f58-80ab-49b3-b5ae-d94034dab10c",
+      "method": "exact"
+    },
+    {
+      "artist_name": "Burna Boy",
+      "artist_mbid": "78a19169-ac75-4868-b504-7e2e073118e0",
+      "method": "exact"
+    },
+    {
+      "artist_name": "Fela Kuti",
+      "artist_mbid": "6514cffa-fbe0-4965-ad88-e998ead8a82a",
+      "method": "exact"
+    },
+    {
+      "artist_name": "Wizkid",
+      "artist_mbid": "efc5d365-a448-4e2f-9b5f-4a7c84be725c",
+      "method": "exact"
+    },
+    {
+      "artist_name": "Stromae",
+      "artist_mbid": "ab2528d9-719f-4261-8098-21849222a0f2",
+      "method": "exact"
+    },
+    {
+      "artist_name": "Daft Punk",
+      "artist_mbid": "056e4f3e-d505-4dad-8ec1-d04f521cbb56",
+      "method": "exact"
+    },
+    {
+      "artist_name": "Sia",
+      "artist_mbid": "2f548675-008d-4332-876c-108b0c7ab9c5",
+      "method": "exact"
+    }
+  ],
+  "possibly_capped_artists": [
+    "Bruno Mars",
+    "Taylor Swift",
+    "Beyoncé",
+    "The Weeknd",
+    "Adele",
+    "Ed Sheeran",
+    "Billie Eilish",
+    "Lady Gaga",
+    "Michael Jackson",
+    "Queen",
+    "Rihanna",
+    "Kendrick Lamar",
+    "Justin Bieber",
+    "Ariana Grande",
+    "Katy Perry",
+    "Dua Lipa",
+    "Sabrina Carpenter",
+    "Olivia Rodrigo",
+    "The Beatles",
+    "Elvis Presley",
+    "Whitney Houston",
+    "Prince",
+    "David Bowie",
+    "Bob Dylan",
+    "Stevie Wonder",
+    "Marvin Gaye",
+    "Aretha Franklin",
+    "Frank Sinatra",
+    "Eminem",
+    "JAŸ-Z",
+    "Cardi B",
+    "Shakira",
+    "Daddy Yankee",
+    "BTS",
+    "BLACKPINK",
+    "A. R. Rahman",
+    "Arijit Singh",
+    "Lata Mangeshkar",
+    "Burna Boy",
+    "Fela Kuti",
+    "Daft Punk",
+    "Sia"
+  ],
+  "all_track_counts_zero": true,
+  "dictionary_discrepancies": [
+    {
+      "table": "artists",
+      "column": "top_tags",
+      "description": "Up to five highest-count MusicBrainz tags separated by |",
+      "type": "string"
+    },
+    {
+      "table": "releases",
+      "column": "release_id",
+      "description": "Stable MusicBrainz release identifier",
+      "type": "string"
+    },
+    {
+      "table": "releases",
+      "column": "release_year",
+      "description": "Year recorded in the release date",
+      "type": "string"
+    },
+    {
+      "table": "releases",
+      "column": "has_cover_art",
+      "description": "Whether MusicBrainz marks front cover art as available",
+      "type": "boolean"
+    },
+    {
+      "table": "pageviews",
+      "column": "date",
+      "description": "UTC pageview date in YYYYMMDD format",
+      "type": "string"
+    },
+    {
+      "table": "pageviews",
+      "column": "views",
+      "description": "English Wikipedia all-access user pageviews",
+      "type": "integer"
+    }
+  ],
+  "dictionary_notes": [
+    "begin_date is birth for a person or formation for a group, not career start.",
+    "source_url in pageviews contains article slugs, not original API request URLs.",
+    "The release dictionary declares English Wikipedia all-access user views; request settings cannot be independently verified.",
+    "No collector code, raw API responses, artwork, release-group IDs, or dataset license were supplied."
+  ],
+  "summary_missing_artists": [
+    "Diljit Dosanjh",
+    "Lata Mangeshkar",
+    "Kishore Kumar",
+    "Burna Boy",
+    "Fela Kuti",
+    "Wizkid",
+    "Stromae",
+    "Daft Punk",
+    "Sia"
+  ],
+  "summary_disagreements": [
+    {
+      "artist": "Bruno Mars",
+      "field": "median_daily_views",
+      "supplied": "9836",
+      "recomputed": 9653.0
+    },
+    {
+      "artist": "Taylor Swift",
+      "field": "median_daily_views",
+      "supplied": "14855",
+      "recomputed": 14732.5
+    },
+    {
+      "artist": "Beyoncé",
+      "field": "median_daily_views",
+      "supplied": "6796",
+      "recomputed": 6777.5
+    },
+    {
+      "artist": "The Weeknd",
+      "field": "median_daily_views",
+      "supplied": "4648",
+      "recomputed": 4592.5
+    },
+    {
+      "artist": "Adele",
+      "field": "median_daily_views",
+      "supplied": "4199",
+      "recomputed": 4189.5
+    },
+    {
+      "artist": "Ed Sheeran",
+      "field": "median_daily_views",
+      "supplied": "8798",
+      "recomputed": 8774.0
+    },
+    {
+      "artist": "Billie Eilish",
+      "field": "median_daily_views",
+      "supplied": "5537",
+      "recomputed": 5494.0
+    },
+    {
+      "artist": "Lady Gaga",
+      "field": "median_daily_views",
+      "supplied": "10096",
+      "recomputed": 10059.5
+    },
+    {
+      "artist": "Michael Jackson",
+      "field": "median_daily_views",
+      "supplied": "24325",
+      "recomputed": 23895.0
+    },
+    {
+      "artist": "Queen",
+      "field": "median_daily_views",
+      "supplied": "177",
+      "recomputed": 175.0
+    },
+    {
+      "artist": "Rihanna",
+      "field": "median_daily_views",
+      "supplied": "7263",
+      "recomputed": 7249.0
+    },
+    {
+      "artist": "Drake",
+      "field": "median_daily_views",
+      "supplied": "159",
+      "recomputed": 157.5
+    },
+    {
+      "artist": "Drake",
+      "field": "release_count",
+      "supplied": "96",
+      "recomputed": 99
+    },
+    {
+      "artist": "Kendrick Lamar",
+      "field": "median_daily_views",
+      "supplied": "3792",
+      "recomputed": 3776.0
+    },
+    {
+      "artist": "Kanye West Tribute Band",
+      "field": "release_count",
+      "supplied": "0",
+      "recomputed": 1
+    },
+    {
+      "artist": "Kanye West Tribute Band",
+      "field": "first_release_year",
+      "supplied": "",
+      "recomputed": 2006
+    },
+    {
+      "artist": "Kanye West Tribute Band",
+      "field": "last_release_year",
+      "supplied": "",
+      "recomputed": 2006
+    },
+    {
+      "artist": "Justin Bieber",
+      "field": "median_daily_views",
+      "supplied": "5571",
+      "recomputed": 5559.5
+    },
+    {
+      "artist": "Ariana Grande",
+      "field": "median_daily_views",
+      "supplied": "9025",
+      "recomputed": 8836.5
+    },
+    {
+      "artist": "Ariana Grande",
+      "field": "release_count",
+      "supplied": "98",
+      "recomputed": 100
+    },
+    {
+      "artist": "Katy Perry",
+      "field": "median_daily_views",
+      "supplied": "5571",
+      "recomputed": 5462.0
+    },
+    {
+      "artist": "Dua Lipa",
+      "field": "median_daily_views",
+      "supplied": "11076",
+      "recomputed": 11043.0
+    },
+    {
+      "artist": "Sabrina Carpenter",
+      "field": "median_daily_views",
+      "supplied": "6703",
+      "recomputed": 6696.5
+    },
+    {
+      "artist": "Olivia Rodrigo",
+      "field": "median_daily_views",
+      "supplied": "10346",
+      "recomputed": 10256.5
+    },
+    {
+      "artist": "The Beatles",
+      "field": "median_daily_views",
+      "supplied": "9328",
+      "recomputed": 9318.0
+    },
+    {
+      "artist": "Elvis Presley",
+      "field": "median_daily_views",
+      "supplied": "10461",
+      "recomputed": 10456.0
+    },
+    {
+      "artist": "Whitney Houston",
+      "field": "median_daily_views",
+      "supplied": "6606",
+      "recomputed": 6584.0
+    },
+    {
+      "artist": "Prince",
+      "field": "median_daily_views",
+      "supplied": "336",
+      "recomputed": 335.5
+    },
+    {
+      "artist": "David Bowie",
+      "field": "median_daily_views",
+      "supplied": "9006",
+      "recomputed": 8948.0
+    },
+    {
+      "artist": "Bob Dylan",
+      "field": "median_daily_views",
+      "supplied": "7063",
+      "recomputed": 7062.0
+    },
+    {
+      "artist": "Stevie Wonder",
+      "field": "median_daily_views",
+      "supplied": "5997",
+      "recomputed": 5963.0
+    },
+    {
+      "artist": "Marvin Gaye",
+      "field": "median_daily_views",
+      "supplied": "3512",
+      "recomputed": 3508.0
+    },
+    {
+      "artist": "Aretha Franklin",
+      "field": "median_daily_views",
+      "supplied": "4140",
+      "recomputed": 4114.0
+    },
+    {
+      "artist": "Frank Sinatra",
+      "field": "median_daily_views",
+      "supplied": "7122",
+      "recomputed": 7054.0
+    },
+    {
+      "artist": "Eminem",
+      "field": "median_daily_views",
+      "supplied": "7277",
+      "recomputed": 7255.0
+    },
+    {
+      "artist": "JAŸ-Z",
+      "field": "release_count",
+      "supplied": "0",
+      "recomputed": 100
+    },
+    {
+      "artist": "JAŸ-Z",
+      "field": "first_release_year",
+      "supplied": "",
+      "recomputed": 1994
+    },
+    {
+      "artist": "JAŸ-Z",
+      "field": "last_release_year",
+      "supplied": "",
+      "recomputed": 2002
+    },
+    {
+      "artist": "Nicki Minaj",
+      "field": "median_daily_views",
+      "supplied": "3874",
+      "recomputed": 3803.0
+    },
+    {
+      "artist": "Nicki Minaj",
+      "field": "release_count",
+      "supplied": "100",
+      "recomputed": 97
+    },
+    {
+      "artist": "Cardi B",
+      "field": "median_daily_views",
+      "supplied": "4286",
+      "recomputed": 4265.5
+    },
+    {
+      "artist": "Bad Bunny",
+      "field": "median_daily_views",
+      "supplied": "3759",
+      "recomputed": 3747.0
+    },
+    {
+      "artist": "Bad Bunny",
+      "field": "release_count",
+      "supplied": "94",
+      "recomputed": 98
+    },
+    {
+      "artist": "J Balvin",
+      "field": "median_daily_views",
+      "supplied": "589",
+      "recomputed": 579.0
+    },
+    {
+      "artist": "J Balvin",
+      "field": "release_count",
+      "supplied": "100",
+      "recomputed": 94
+    },
+    {
+      "artist": "Shakira",
+      "field": "median_daily_views",
+      "supplied": "7219",
+      "recomputed": 7187.0
+    },
+    {
+      "artist": "Daddy Yankee",
+      "field": "median_daily_views",
+      "supplied": "792",
+      "recomputed": 791.5
+    },
+    {
+      "artist": "BTS",
+      "field": "median_daily_views",
+      "supplied": "5367",
+      "recomputed": 5350.5
+    },
+    {
+      "artist": "BLACKPINK",
+      "field": "median_daily_views",
+      "supplied": "11",
+      "recomputed": 10.5
+    },
+    {
+      "artist": "A. R. Rahman",
+      "field": "median_daily_views",
+      "supplied": "2052",
+      "recomputed": 2046.0
+    },
+    {
+      "artist": "Arijit Singh",
+      "field": "total_pageviews",
+      "supplied": "0",
+      "recomputed": 79015
+    },
+    {
+      "artist": "Arijit Singh",
+      "field": "pageview_days",
+      "supplied": "0",
+      "recomputed": 30
+    },
+    {
+      "artist": "Arijit Singh",
+      "field": "median_daily_views",
+      "supplied": "",
+      "recomputed": 2245.0
+    }
+  ],
+  "bounds": [
+    "2026-09-05",
+    "2026-10-04"
+  ],
+  "total_views": 9509128,
+  "collected_at": [
+    "2026-10-05T05:05:14.242906+00:00"
+  ],
+  "transformations": [
+    "Original CSV bytes preserved; raw rows retained in database.",
+    "Blank metadata becomes null.",
+    "Tags and aliases split on semicolons, trimmed, and deduplicated within artist.",
+    "Exact unique name joins; NFKC fallback only when unique.",
+    "UTC YYYYMMDD dates parsed; nonnegative integer views validated; absent days remain absent.",
+    "Partial release dates retain precision; barcodes remain strings.",
+    "Cleaned CSV cells are escaped against spreadsheet formula injection."
+  ]
+}

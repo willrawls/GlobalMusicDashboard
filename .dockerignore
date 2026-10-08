@@ -1,0 +1,14 @@
+.git
+.venv
+node_modules
+dist
+__pycache__
+.pytest_cache
+artifacts
+*.log
+.env*
+.railway
+data/snapshot*
+data/cleaned
+data/quality.json
+tests
