@@ -264,7 +264,7 @@ if (ROOT / 'dist/assets').exists():
 
 @app.get('/{path:path}')
 def frontend(path: str):
-    valid = {'', 'artists', 'attention', 'releases', 'context', 'questions', 'methodology'}
+    valid = {'', 'artists', 'attention', 'releases', 'context', 'questions', 'methodology', 'explore'}
     if path not in valid:
         if not path.startswith('artists/') or path.split('/')[-1] not in {a['artist_mbid'] for a in read_snapshot()[1]}:
             raise HTTPException(404, 'Route not found')

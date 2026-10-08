@@ -26,7 +26,9 @@ import {
   RotateCcw,
   Search,
   ChevronRight,
+  Compass,
 } from "lucide-react";
+import Explore from "./Explore";
 import "./styles.css";
 
 type Row = Record<string, any>;
@@ -61,9 +63,14 @@ const nav = [
   ["/releases", "Release patterns", Disc3],
   ["/context", "Countries & tags", Globe2],
   ["/questions", "Ask the data", MessageCircleQuestion],
+  ["/explore", "Explore", Compass],
   ["/methodology", "Data & methodology", Database],
 ] as const;
 const titles: Row = {
+  "/explore": [
+    "Explore",
+    "Follow the sources and discover the wider world behind the data.",
+  ],
   "/": [
     "The attention landscape",
     "Explore public attention across this captured artist sample.",
@@ -346,6 +353,7 @@ function App() {
     }
   }, [dark]);
   useEffect(() => {
+    if (page === "/explore") return;
     fetch("/api/options")
       .then((r) => {
         if (!r.ok) throw Error("Could not load filter options");
@@ -359,6 +367,7 @@ function App() {
       .catch(() => {});
   }, []);
   useEffect(() => {
+    if (page === "/explore") return;
     const controller = new AbortController();
     setLoading(true);
     setError("");
@@ -595,9 +604,11 @@ function App() {
         <header className="topbar">
           <span>GLOBAL MUSIC / SNAPSHOT EXPLORER</span>
           <span className="snapshot-tag">
-            {options
-              ? `${options.bounds[0]} — ${options.bounds[1]}`
-              : "Loading snapshot…"}
+            {page === "/explore"
+              ? "SOURCES & FURTHER READING"
+              : options
+                ? `${options.bounds[0]} — ${options.bounds[1]}`
+                : "Loading snapshot…"}
           </span>
         </header>
         <div className="workspace">
@@ -615,11 +626,13 @@ function App() {
                   : (titles[page] || titles["/"])[1]}
               </p>
             </div>
-            <a className="button export" href={exportUrl("csv")}>
-              <Download size={16} /> Export rows
-            </a>
+            {page !== "/explore" && (
+              <a className="button export" href={exportUrl("csv")}>
+                <Download size={16} /> Export rows
+              </a>
+            )}
           </div>
-          {
+          {page !== "/explore" && (
             <div className="filters" aria-label="Dataset filters">
               <label>
                 From
@@ -686,7 +699,7 @@ function App() {
                 <RotateCcw size={16} /> Reset
               </button>
             </div>
-          }
+          )}
           {(page === "/attention" ||
             page === "/questions" ||
             page === "/releases" ||
@@ -778,7 +791,9 @@ function App() {
                 )}
               </div>
             )}
-          {loading ? (
+          {page === "/explore" ? (
+            <Explore />
+          ) : loading ? (
             <div className="status" role="status">
               Loading captured observations…
             </div>

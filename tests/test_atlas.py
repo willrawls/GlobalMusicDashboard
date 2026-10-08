@@ -125,6 +125,13 @@ def test_endpoints(path):
     assert client.get(path).status_code==200
 
 
+def test_explore_direct_route_and_invalid_neighbor():
+    response = client.get('/explore')
+    assert response.status_code == 200
+    assert 'text/html' in response.headers['content-type']
+    assert client.get('/explore/nonexistent').status_code == 404
+
+
 @pytest.mark.parametrize('params',[{'start':'2020-01-01'},{'end':'2026-09-01'},{'start':'2026-10-04','end':'2026-09-05'}, {'artists':'invalid'},{'country':'BAD'},{'tag':'not-a-real-tag'},{'limit':10000},{'sort':'DROP TABLE artists'},{'page':0}])
 def test_invalid_inputs(params):
     assert client.get('/api/overview',params=params).status_code==422
