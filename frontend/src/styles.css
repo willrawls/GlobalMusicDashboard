@@ -1,16 +1,27 @@
 :root {
   font-family: Inter, "Segoe UI", sans-serif;
-  color: #243c3a;
-  background: #f6f5f1;
+  color-scheme: dark;
+  color: var(--ink);
+  background: var(--bg);
   font-synthesis: none;
-  --bg: #f6f5f1;
-  --panel: #fff;
-  --ink: #243c3a;
-  --muted: #697975;
-  --line: #e1e5df;
-  --accent: #126761;
-  --soft: #eaf2ec;
-  --side: #fdfdfa;
+  /* Night Owl / Light Owl UI adaptation, shared with William's budget site. */
+  --bg: #011627;
+  --panel: #0b253a;
+  --ink: #d6deeb;
+  --muted: #a7bdd0;
+  --line: #36556d;
+  --accent: #82aaff;
+  --soft: #1d3b53;
+  --side: #011627;
+  --button: #5f43aa;
+  --danger: #ff9b9b;
+  --chart-0: #7fdbca;
+  --chart-1: #c792ea;
+  --chart-2: #f78c6c;
+  --chart-3: #82aaff;
+  --chart-4: #ff9bce;
+  --chart-5: #addb67;
+  --chart-6: #ecc48d;
 }
 * {
   box-sizing: border-box;
@@ -42,7 +53,7 @@ a:focus-visible,
 input:focus-visible,
 select:focus-visible,
 summary:focus-visible {
-  outline: 3px solid #9567cd;
+  outline: 3px solid var(--accent);
 }
 button {
   cursor: pointer;
@@ -128,13 +139,13 @@ aside {
   font-family: Georgia, serif;
   font-size: 18px;
   line-height: 1.2;
-  margin-bottom: 55px;
+  margin-bottom: 20px;
 }
 .brand:hover {
   text-decoration: none;
 }
 .brand-mark {
-  background: var(--accent);
+  background: var(--button);
   color: #fff;
   padding: 9px;
   border-radius: 50%;
@@ -202,10 +213,34 @@ nav .active {
   display: flex;
   align-items: center;
   gap: 10px;
-  background: transparent;
-  border: 0;
-  color: var(--muted);
-  font-size: 13px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  font-size: 14px;
+  width: 100%;
+  min-height: 44px;
+  margin-bottom: 28px;
+  padding: 10px;
+}
+.theme-track {
+  margin-left: auto;
+  width: 32px;
+  height: 18px;
+  border-radius: 12px;
+  background: var(--button);
+  padding: 3px;
+  flex-shrink: 0;
+}
+.theme-track > span {
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #fff;
+  transform: translateX(14px);
+}
+[data-theme="light"] .theme-track > span {
+  transform: translateX(0);
 }
 main {
   flex: 1;
@@ -340,7 +375,7 @@ main {
 }
 .finding {
   background: var(--soft);
-  border: 1px solid #d3e4da;
+  border: 1px solid var(--line);
   padding: 18px 22px;
   border-radius: 8px;
   display: flex;
@@ -456,7 +491,7 @@ main {
 .note {
   font-size: 13px;
   color: var(--muted);
-  border-left: 3px solid #a2bfb4;
+  border-left: 3px solid var(--accent);
   background: var(--soft);
   padding: 15px 18px;
   line-height: 1.65;
@@ -674,7 +709,7 @@ tbody tr:hover {
   padding: 15px;
 }
 .question-buttons .selected {
-  background: var(--accent);
+  background: var(--button);
   color: white;
 }
 .answer {
@@ -733,8 +768,8 @@ tbody tr:hover {
   color: var(--muted);
 }
 .error {
-  border: 1px solid #c97e78;
-  color: #a5342e;
+  border: 1px solid var(--danger);
+  color: var(--danger);
   background: var(--panel);
   margin: 24px 0;
 }
@@ -767,25 +802,25 @@ footer p {
   border-color: var(--line) !important;
   color: var(--ink);
 }
-[data-theme="dark"] {
-  --bg: #172321;
-  --panel: #20312e;
-  --side: #1a2926;
-  --ink: #e1eae5;
-  --muted: #a4b7af;
-  --line: #364a42;
-  --accent: #7fd5bf;
-  --soft: #2b4037;
-  background: var(--bg);
-  color: var(--ink);
-}
-[data-theme="dark"] .finding {
-  border-color: var(--line);
-}
-[data-theme="dark"] .brand-mark,
-[data-theme="dark"] .question-buttons .selected {
-  background: #126761;
-  color: #fff;
+[data-theme="light"] {
+  color-scheme: light;
+  --bg: #fbfbfb;
+  --panel: #ffffff;
+  --side: #f7f9fc;
+  --ink: #403f53;
+  --muted: #52627a;
+  --line: #dce3ed;
+  --accent: #3b4fc4;
+  --soft: #edf2ff;
+  --button: #3b4fc4;
+  --danger: #ab2935;
+  --chart-0: #147d76;
+  --chart-1: #8844a8;
+  --chart-2: #b34b24;
+  --chart-3: #3b4fc4;
+  --chart-4: #b33778;
+  --chart-5: #557a20;
+  --chart-6: #93600a;
 }
 @media (min-width: 1550px) {
   .workspace {
@@ -854,10 +889,8 @@ footer p {
     width: 16px;
   }
   .theme {
-    position: absolute;
-    right: 12px;
-    top: 24px;
-    font-size: 11px;
+    width: 190px;
+    margin-bottom: 16px;
   }
   .topbar {
     height: 45px;
@@ -980,9 +1013,6 @@ footer p {
   }
   .brand {
     font-size: 15px;
-  }
-  .theme {
-    font-size: 0;
   }
   .theme svg {
     width: 20px;

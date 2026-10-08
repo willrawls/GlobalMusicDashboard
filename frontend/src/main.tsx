@@ -30,6 +30,19 @@ import {
 import "./styles.css";
 
 type Row = Record<string, any>;
+// Preserve artist color assignments while adapting their contrast to each theme.
+const owlColor = (color: string) => {
+  const slot = [
+    "#117c79",
+    "#7954b3",
+    "#b45127",
+    "#3565a4",
+    "#af3e75",
+    "#678233",
+    "#936737",
+  ].indexOf(color);
+  return `var(--chart-${Math.max(0, slot)})`;
+};
 const fmt = (v: any) =>
   v == null
     ? "—"
@@ -181,7 +194,7 @@ function Bars({
               <span
                 style={{
                   width: `${((r[value] || 0) / max) * 100}%`,
-                  background: r.color,
+                  background: owlColor(r.color),
                 }}
               />
             </span>
@@ -199,7 +212,7 @@ function Trend({
   rows,
   value = "views",
   label = "Captured views",
-  color = "#117c79",
+  color = "var(--chart-0)",
 }: {
   rows: Row[];
   value?: string;
@@ -281,7 +294,7 @@ function App() {
     [error, setError] = useState(""),
     [loading, setLoading] = useState(true);
   const [dark, setDark] = useState(
-    localStorage.getItem("atlas-theme") === "dark",
+    document.documentElement.dataset.theme !== "light",
   );
   const selected = (params.get("artists") || "").split(",").filter(Boolean);
   const query = new URLSearchParams(params);
@@ -312,7 +325,14 @@ function App() {
   }
   useEffect(() => {
     document.documentElement.dataset.theme = dark ? "dark" : "light";
-    localStorage.setItem("atlas-theme", dark ? "dark" : "light");
+    document
+      .querySelector('meta[name="theme-color"]')
+      ?.setAttribute("content", dark ? "#011627" : "#fbfbfb");
+    try {
+      localStorage.setItem("atlas-owl-theme", dark ? "dark" : "light");
+    } catch {
+      /* Theme still works when browser storage is unavailable. */
+    }
   }, [dark]);
   useEffect(() => {
     fetch("/api/options")
@@ -365,7 +385,7 @@ function App() {
         <div className="legend">
           {d.artists.map((a: Row) => (
             <span key={a.artist_mbid}>
-              <i style={{ background: a.color }} />
+              <i style={{ background: owlColor(a.color) }} />
               {a.artist_name} · {a.effective_days} effective days
             </span>
           ))}
@@ -422,7 +442,7 @@ function App() {
                 <Line
                   key={a.artist_mbid}
                   dataKey={a.artist_mbid}
-                  stroke={a.color}
+                  stroke={owlColor(a.color)}
                   strokeDasharray={i % 2 ? "6 3" : undefined}
                   dot={false}
                   strokeWidth={2.3}
@@ -482,7 +502,7 @@ function App() {
                         p.raw_views === null
                           ? {}
                           : {
-                              background: a.color,
+                              background: owlColor(a.color),
                               opacity: 0.25 + (0.75 * p.raw_views) / max,
                             }
                       }
@@ -523,6 +543,20 @@ function App() {
             Music Attention<span className="atlas">ATLAS</span>
           </span>
         </a>
+        <button
+          className="theme"
+          role="switch"
+          aria-checked={dark}
+          aria-label="Night Owl dark theme"
+          title={`Switch to ${dark ? "Light Owl" : "Night Owl"}`}
+          onClick={() => setDark(!dark)}
+        >
+          {dark ? <Moon size={17} /> : <Sun size={17} />}
+          <span>{dark ? "Night Owl" : "Light Owl"}</span>
+          <span className="theme-track" aria-hidden="true">
+            <span />
+          </span>
+        </button>
         <div className="nav-label">EXPLORE THE SNAPSHOT</div>
         <nav aria-label="Main navigation">
           {nav.map(([url, label, Icon]) => (
@@ -545,10 +579,6 @@ function App() {
           </p>
           <small>Wikipedia pageviews & MusicBrainz metadata.</small>
         </div>
-        <button className="theme" onClick={() => setDark(!dark)}>
-          {dark ? <Sun size={17} /> : <Moon size={17} />}{" "}
-          {dark ? "Light" : "Dark"} appearance
-        </button>
       </aside>
       <main>
         <header className="topbar">
@@ -851,7 +881,7 @@ function App() {
                           rows={d.concentration}
                           value="share"
                           label="Cumulative share (%)"
-                          color="#7954b3"
+                          color="var(--chart-1)"
                         />
                       </Panel>
                       <Panel
@@ -929,7 +959,7 @@ function App() {
                             <div className="artist-cell">
                               <span
                                 className="initials"
-                                style={{ color: r.color }}
+                                style={{ color: owlColor(r.color) }}
                               >
                                 {r.artist_name
                                   .split(" ")

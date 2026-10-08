@@ -4,6 +4,8 @@ Live: https://music-attention-atlas-production.up.railway.app · Validation and 
 
 Seven-page React/TypeScript dashboard backed by FastAPI and an immutable SQLite snapshot. The original six CSVs are preserved in `data/raw`. No accounts, live data collection, writable database, paid AI API, or separate database service is used.
 
+Appearance defaults to Night Owl. The upper-left switch below the logo selects Light Owl and remembers the choice under `atlas-owl-theme`. The saved theme is applied before React renders; charts use a stable artist color assignment with separate light/dark contrast values.
+
 ## Run locally (PowerShell)
 
 ```powershell
