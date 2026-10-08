@@ -1,2 +1,30 @@
 <!doctype html>
-<html lang="en" data-theme="dark"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="theme-color" content="#011627"/><meta name="description" content="Explore captured Wikipedia attention and MusicBrainz release metadata, with transparent coverage and calculations."/><title>Music Attention Atlas</title><script>try { if (localStorage.getItem('atlas-owl-theme') === 'light') document.documentElement.dataset.theme = 'light'; } catch {}</script></head><body><div id="root"></div><script type="module" src="/frontend/src/main.tsx"></script></body></html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#011627" />
+    <meta
+      name="description"
+      content="Explore captured Wikipedia attention and MusicBrainz release metadata, with transparent coverage and calculations."
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/frontend/assets/music-atlas-32.png"
+    />
+    <link rel="apple-touch-icon" href="/frontend/assets/music-atlas-256.png" />
+    <title>Music Attention Atlas</title>
+    <script>
+      try {
+        if (localStorage.getItem("atlas-owl-theme") === "light")
+          document.documentElement.dataset.theme = "light";
+      } catch {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/frontend/src/main.tsx"></script>
+  </body>
+</html>

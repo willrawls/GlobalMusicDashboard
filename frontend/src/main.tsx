@@ -1,3 +1,4 @@
+import atlasLogo from "../assets/music-atlas-256.png";
 import React, { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import {
@@ -557,9 +558,13 @@ function App() {
       <header className="site-header">
         <div className="site-identity">
           <a href="/" className="brand">
-            <span className="brand-mark">
-              <AudioLines size={24} />
-            </span>
+            <img
+              className="brand-mark"
+              src={atlasLogo}
+              alt=""
+              width="44"
+              height="44"
+            />
             <span>
               Music Attention<span className="atlas">ATLAS</span>
             </span>

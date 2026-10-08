@@ -144,12 +144,11 @@ small,
   text-decoration: none;
 }
 .brand-mark {
-  background: var(--button);
-  color: #fff;
-  padding: 9px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: block;
+  flex-shrink: 0;
 }
 .atlas {
   display: block;
