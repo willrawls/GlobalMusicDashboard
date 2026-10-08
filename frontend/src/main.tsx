@@ -1580,7 +1580,7 @@ function App() {
               className="footer-credit"
               href="https://aurodemo-production.up.railway.app"
             >
-              by William Rawls and ChatGPT
+              by William Rawls &amp; ChatGPT. Dataset from Kaggle
             </a>
           </footer>
         </div>
