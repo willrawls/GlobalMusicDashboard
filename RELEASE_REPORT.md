@@ -1,5 +1,13 @@
 # Music Attention Atlas — release report
 
+## Community tag clarity update
+
+Published October 8, 2026; source `bc115ee`, deployment `d633b3d4-6074-4106-947e-ff846510ed1c`.
+
+The unfiltered aggregation was correct: pop has 40 artists / 8,844,037 views; pop soul has 13 / 3,591,993; rapper has 4 / 1,014,776. A single-artist filter reproduces identical totals across that artist's tags. The previous panel displayed unlabeled pageviews and lacked visible artist-filter controls on the context page.
+
+The panel now defaults to explicitly labeled artist counts, offers a captured-pageviews selector and tag search, displays artist filter chips and a scope explanation, and exports the matching tag rows. All 38 tests passed, including real-snapshot tag regressions and the valid single-artist equal-values case. Production build, mobile overflow check, live browser counts for all three tags, live health, and matching tag CSV export passed.
+
 ## Night Owl / Light Owl update
 
 Published October 8, 2026. Night Owl is now the default; a labeled, keyboard-accessible switch beneath the logo at the upper left selects Light Owl. Both palettes reuse the established budget-site colors, with theme-aware chart colors. Preference persists across reloads and navigation and is applied before React renders.
