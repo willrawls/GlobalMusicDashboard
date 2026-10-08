@@ -1,5 +1,16 @@
 # Music Attention Atlas — release report
 
+## Night Owl / Light Owl update
+
+Published October 8, 2026. Night Owl is now the default; a labeled, keyboard-accessible switch beneath the logo at the upper left selects Light Owl. Both palettes reuse the established budget-site colors, with theme-aware chart colors. Preference persists across reloads and navigation and is applied before React renders.
+
+- Source commit: `a9acbaf`
+- Successful Railway deployment: `65dfe08a-8cc1-47b0-b1c4-be45d35840a3`
+- Container digest: `sha256:f510a959e580196fae68f8536c6e10de88392a92c887d767ea07798232eef6e2`
+- Production build and `git diff --check` passed. Browser checks verified both themes, keyboard switching, reload/navigation persistence, mobile upper-left placement without page overflow, and dark chart colors. Live checks confirmed Night Owl `#011627`, Light Owl `#fbfbfb`, saved switching, and the unchanged 9,509,128-view total.
+
+## Initial release
+
 Verified on October 8, 2026.
 
 **Live dashboard:** https://music-attention-atlas-production.up.railway.app
