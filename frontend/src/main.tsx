@@ -1586,7 +1586,7 @@ function App() {
             <a href="/methodology">Sources & methodology</a>
             <a
               className="footer-credit"
-              href="https://aurodemo-production.up.railway.app"
+              href="https://aurodemo-production.up.railway.app/about"
             >
               by William Rawls &amp; ChatGPT. Dataset from Kaggle
             </a>
