@@ -166,12 +166,16 @@ function Bars({
   value = "total",
   label = "name",
   limit = 12,
+  unit = "",
+  detail,
 }: {
   rows: Row[];
   onSelect?: (r: Row) => void;
   value?: string;
   label?: string;
   limit?: number;
+  unit?: string;
+  detail?: (row: Row) => string;
 }) {
   const max = Math.max(1, ...rows.map((r) => r[value] || 0));
   return (
@@ -182,13 +186,19 @@ function Bars({
           onClick={() => onSelect?.(r)}
           className="bar-row"
           key={i}
-          title={`${r[label]}: ${fmt(r[value])}`}
+          title={`${r[label]}: ${fmt(r[value])}${unit ? " " + unit : ""}`}
         >
           <span className="rank">{String(i + 1).padStart(2, "0")}</span>
           <span className="bar-content">
             <span className="bar-text">
               <strong>{r[label]}</strong>
-              <span>{fmt(r[value])}</span>
+              <span>
+                {fmt(r[value])}
+                {unit
+                  ? " " +
+                    (unit === "artists" && r[value] === 1 ? "artist" : unit)
+                  : ""}
+              </span>
             </span>
             <span className="track">
               <span
@@ -198,6 +208,7 @@ function Bars({
                 }}
               />
             </span>
+            {detail && <small className="bar-detail">{detail(r)}</small>}
           </span>
           {onSelect && <ChevronRight size={15} />}
         </button>
@@ -310,7 +321,7 @@ function App() {
   };
   const endpoint = detail ? "series" : kind[page] || "overview";
   function update(key: string, value: string) {
-    const p = new URLSearchParams(params);
+    const p = new URLSearchParams(location.search);
     value ? p.set(key, value) : p.delete(key);
     if (key !== "page") p.delete("page");
     history.replaceState(null, "", path + (p.size ? "?" + p : ""));
@@ -679,6 +690,7 @@ function App() {
           {(page === "/attention" ||
             page === "/questions" ||
             page === "/releases" ||
+            page === "/context" ||
             page === "/artists") &&
             !detail && (
               <div className="selection">
@@ -1231,13 +1243,77 @@ function App() {
                       </Panel>
                       <Panel
                         title="Shared community tags"
-                        sub="Artists count once per tag; tags overlap"
+                        sub={`Tags among ${meta.eligible_artists} included ${meta.eligible_artists === 1 ? "artist" : "artists"}. An artist can belong to several tags.`}
                       >
+                        <div className="inline-controls">
+                          <label>
+                            Tag metric
+                            <select
+                              value={params.get("tag_metric") || "artists"}
+                              onChange={(e) =>
+                                update("tag_metric", e.target.value)
+                              }
+                            >
+                              <option value="artists">Artist count</option>
+                              <option value="total">Captured pageviews</option>
+                            </select>
+                          </label>
+                          <label>
+                            Find a tag
+                            <input
+                              type="search"
+                              value={params.get("tag_search") || ""}
+                              placeholder="e.g. rapper or pop soul"
+                              onChange={(e) =>
+                                update("tag_search", e.target.value)
+                              }
+                            />
+                          </label>
+                        </div>
+                        {(selected.length > 0 || params.get("tag")) && (
+                          <p className="note">
+                            Artist or tag filters narrow this panel. Tags shared
+                            by the same included artists have identical counts
+                            and pageview totals. Remove the filter chips above
+                            or use Reset to compare the full sample.
+                          </p>
+                        )}
                         <Bars
                           rows={d.tags}
                           limit={15}
+                          value={params.get("tag_metric") || "artists"}
+                          unit={
+                            params.get("tag_metric") === "total"
+                              ? "views"
+                              : "artists"
+                          }
+                          detail={(r) =>
+                            params.get("tag_metric") === "total"
+                              ? `${r.artists} ${r.artists === 1 ? "artist" : "artists"} · ${r.observed_artists} with observations`
+                              : `${fmt(r.total)} captured views · ${r.observed_artists} with observations`
+                          }
                           onSelect={(r) => drill("/artists", "tag", r.name)}
                         />
+                        <p className="hint">
+                          Showing {Math.min(15, d.tags.length)} of{" "}
+                          {d.tags.length} matching tags, ranked by{" "}
+                          {params.get("tag_metric") === "total"
+                            ? "captured pageviews"
+                            : "artist count"}
+                          . These are artist memberships, not tag votes or
+                          listener counts.
+                        </p>
+                        <a
+                          href={
+                            "/downloads/result/context.csv?" +
+                            new URLSearchParams({
+                              ...Object.fromEntries(params),
+                              dimension: "tags",
+                            })
+                          }
+                        >
+                          Download matching tag counts and views
+                        </a>
                         <details>
                           <summary>Tag sample sizes and values</summary>
                           <Table

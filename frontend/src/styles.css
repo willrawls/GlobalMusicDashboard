@@ -464,6 +464,11 @@ main {
   font-weight: 500;
   overflow-wrap: anywhere;
 }
+.bar-detail {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+}
 .bar-text > span {
   font-variant-numeric: tabular-nums;
   white-space: nowrap;

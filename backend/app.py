@@ -56,6 +56,9 @@ class Filters(BaseModel):
     limit: int = Field(50, ge=1, le=500)
     sort: Literal['attention', 'name', 'coverage'] = 'attention'
     question: Literal['attention', 'spike', 'concentration', 'compare', 'countries', 'tags', 'missing', 'unsupported'] = 'attention'
+    tag_metric: Literal['artists', 'total'] = 'artists'
+    tag_search: str = Field('', max_length=200)
+    dimension: Literal['countries', 'tags'] = 'countries'
 
 
 def filtered(f):
@@ -155,6 +158,9 @@ def result(kind, f):
         body['daily'] = daily
     elif kind == 'context':
         body = context(metrics)
+        body['tags'] = sorted(
+            [r for r in body['tags'] if f.tag_search.casefold() in r['name'].casefold()],
+            key=lambda r: (-(r[f.tag_metric] or 0), r['name']))
     elif kind == 'releases':
         rows = [r for r in releases if (f.year is None or r['year'] == f.year)
                 and (f.q.casefold() in (r['release_title'] or '').casefold() or f.q.casefold() in r['artist_name'].casefold())]
@@ -236,6 +242,8 @@ def export_result(kind: Kind, format: Literal['csv', 'json'], f: Annotated[Filte
                         headers={'Content-Disposition': f'attachment; filename="{kind}-with-metadata.json"'})
     data = payload['data']
     rows = data.get('rows', data.get('ranking', data.get('countries', [])))
+    if kind == 'context':
+        rows = data[f.dimension]
     if kind in ['comparisons', 'series'] or (kind == 'questions' and f.question == 'compare'):
         rows = [{'artist_mbid': a['artist_mbid'], 'artist_name': a['artist_name'], **p} for a in data['artists'] for p in a['points']]
     return csv_response(rows, f'{kind}.csv')

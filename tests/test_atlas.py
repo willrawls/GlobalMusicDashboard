@@ -158,3 +158,25 @@ def test_releases_and_empty_states():
     assert all(r['year']=='2012' for r in rows)
     assert len(set(r['release_mbid'] for r in rows))==out['distinct_editions']
     assert client.get('/api/artists',params={'q':'no such artist xyz'}).json()['data']['count']==0
+
+
+def test_real_tag_membership_counts_and_export():
+    tags = client.get('/api/context').json()['data']['tags']
+    by_name = {r['name']: r for r in tags}
+    for name, count, total in [('rapper', 4, 1014776), ('pop', 40, 8844037), ('pop soul', 13, 3591993)]:
+        assert by_name[name]['artists'] == count
+        assert by_name[name]['total'] == total
+    assert [r['artists'] for r in tags] == sorted((r['artists'] for r in tags), reverse=True)
+    filtered = client.get('/api/context', params={'tag_search':'rapper','tag_metric':'total'}).json()['data']['tags']
+    exported = list(csv.DictReader(io.StringIO(client.get('/downloads/result/context.csv', params={'tag_search':'rapper','tag_metric':'total','dimension':'tags'}).text)))
+    assert [r['name'] for r in exported] == [r['name'] for r in filtered]
+    assert all('rapper' in r['name'] for r in filtered)
+    assert next(int(r['artists']) for r in exported if r['name']=='rapper') == 4
+
+
+def test_single_artist_shared_tags_legitimately_have_equal_values():
+    artist = next(a for a in artists if len(a['tags_list']) > 3 and any(p['artist_mbid']==a['artist_mbid'] for p in obs))
+    tags = client.get('/api/context',params={'artists':artist['artist_mbid']}).json()['data']['tags']
+    expected = sum(p['views'] for p in obs if p['artist_mbid']==artist['artist_mbid'])
+    assert {r['name'] for r in tags} == set(artist['tags_list'])
+    assert all(r['artists']==1 and r['total']==expected for r in tags)
