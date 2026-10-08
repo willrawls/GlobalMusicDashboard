@@ -1576,6 +1576,12 @@ function App() {
             <span>Music Attention Atlas</span>
             <p>A captured sample, with its gaps intact.</p>
             <a href="/methodology">Sources & methodology</a>
+            <a
+              className="footer-credit"
+              href="https://aurodemo-production.up.railway.app"
+            >
+              by William Rawls and ChatGPT
+            </a>
           </footer>
         </div>
       </main>

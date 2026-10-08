@@ -780,6 +780,7 @@ tbody tr:hover {
 }
 footer {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 15px;
   justify-content: space-between;
@@ -795,6 +796,12 @@ footer > span {
 }
 footer p {
   margin: 0;
+}
+.footer-credit {
+  flex-basis: 100%;
+  text-align: center;
+  font-size: 13px;
+  padding-top: 8px;
 }
 .recharts-cartesian-grid line {
   stroke: var(--line);
